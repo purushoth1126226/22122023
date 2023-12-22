@@ -1,0 +1,170 @@
+@baseurl = http://127.0.0.1:8000/api/v1/admin
+
+# @baseurl = https://simplepos.8queensdemo.in/api/v1/admin
+
+@token  = eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYTViNjgzZDZkNDM2NmUwMGFkN2MxOTRhNTYyYWU4YzVmZmM5OGQ2YTY0YWU5YjdkM2E1Zjc2ZGYxZTAzMzc5ZjBjZWRmYmU2NzE4ZDdjZDQiLCJpYXQiOjE2OTY5MTk0NTQuMDgzMTcxLCJuYmYiOjE2OTY5MTk0NTQuMDgzMTc0LCJleHAiOjE3Mjg1NDE4NTQuMDgxNzYyLCJzdWIiOiIxIiwic2NvcGVzIjpbImFkbWluIl19.VsQixWCP06IszAVYKBIXDWJQCkqJjSK3SHKsMmP6oga7sYuvY3Vc_TC78GWMnznUt1LVYJPwTCL0R9gZa5DfaLLHrGtXmx7-KcjvZQgykEwaj3WBVxaHQGBMfs7i1xCZ_3MJNwQdi6rVQW5NH8JwS06CsnOknakUU0wRIdrWrhpx3PAUEm60zqfHn6GG3NpEgLKhK8jBWo53uBjo9tJf0X0JyBFondmOddx15TBwh7OmTn5i7qAIo6tD2qaKwoBBNYBIxqZc0oJATWAaKR_o88_LBclwtP-KQ3OMqTfxISQuxWaw6vtzy_PvwhvimufEgq2qsXJhhXBeVObcMf2uL7VKMHr1vey1EeaJ8UPDi0IyGuCwkaywhCO6Gj_HQTKeFN-GsXwtz5ejgFWUYzhwKI8imnHzniYVUHGZDJXVEZQFBPcsyucUgb7wXmgqgWRSGCP99r6YtksIa57jGsdGkYkNy4RnPZ80H_NcdmZD9KvlLtW2N1BtbAYK-TXxhr1XuNfg_LMCdApbplujCMHkcwiJ_xE6n_ESZa5fZhlaZctcNAg7c1oemx0xTNb6RS4BHe2nzYs5LL3SnkeLOhJ2mXWZOuSQ5OHi3s7J7C3ljjT3CH0ymnwt0Gv1GA-xob_CBEvD7DHi9gP-OvL1rXAJ3xdmjDnDr6Rl6pqFZxilfQg
+
+@phone = "1234567890"
+@loginsessionid = "47ea8f23-40ce-4255-a8bb-01f66a2e6b16"
+
+@password = "12345678"
+
+### 1) admin password login
+
+POST {{baseurl}}/adminpasswordlogin
+content-type: application/json
+Accept: Application/json
+
+{
+    "phone" : {{phone}},
+    "password" :  {{password}}
+}
+
+### 2) admin logout
+
+GET {{baseurl}}/adminlogout
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+
+### 3) admin support
+POST {{baseurl}}/adminsupport
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+{
+    "type" : 2,
+    "panel" : 1
+}
+
+### 4) GET ADMIN PROFILE
+
+GET {{baseurl}}/admingetprofile
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+
+### 5) ADMIN CHANGE PASSWORD
+
+POST {{baseurl}}/adminchangepassword
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+{
+    "current_password": 123456780,
+    "password": 12345678,
+    "password_confirmation": 12345678
+}
+
+### 6) admin Faq
+
+POST {{baseurl}}/adminfaq
+content-type: application/json
+Accept: Application/jsonj
+Authorization: Bearer {{token}}
+
+{
+    "panel" : 2
+}
+
+### 7) admin Fcm
+
+POST {{baseurl}}/adminsavedeviceinfo
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+{
+    "device_token": "sdfdfd",
+    "device_model": "two",
+    "device_brand": "two",
+    "device_manufacturer": "two"
+}
+
+### 8) NOTIFICATION
+
+GET {{baseurl}}/adminnotification
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+### 9) CUSTOMER
+
+POST {{baseurl}}/adminsearchcustomer
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+{
+    "search": "Ramu"
+}
+
+
+### 10) PRODUCT CATEGORY
+
+POST {{baseurl}}/adminsearchproductcategory
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+{
+    "search": ""
+}
+
+### 11) PRODUCT
+
+POST {{baseurl}}/adminsearchproduct
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+{
+    "search": "",
+    "productcategory_uuid": "5255d94c-db30-4c9e-87fc-c09ff4564560"
+}
+
+### 12) OVERALL PRODUCT SEARCH
+
+POST {{baseurl}}/adminoverallproductsearch
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+{
+    "search": "meat"
+}
+
+### 13) PLACE ORDER
+
+GET {{baseurl}}/adminplaceorder
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+
+### 14) INDIVIDUAL HISTORY
+
+POST {{baseurl}}/adminyourorderhistory
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+{
+    "search": "ramu"
+}
+
+### 16) OVERALL HISTORY
+
+POST {{baseurl}}/adminoverallorderhistory
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+{
+    "search": "1e91de52-246a-495b-b0c0-2251bb2a39bc"
+}
+
+
